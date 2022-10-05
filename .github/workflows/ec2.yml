@@ -26,7 +26,7 @@ jobs:
         TARGET: '/home/${{ secrets.EC2_USER }}'
         EXCLUDE: './postgres-data'
 
-    - name: executing remote ssh commands using password
+    - name: Execute remote SSH commands
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.EC2_HOST }}
@@ -40,4 +40,4 @@ jobs:
           export DBPORT=${{ secrets.DB_PORT }}
           export PORT=8000
           chmod +x main
-          nohup ./main &
+          nohup ./main > nohup.out 2> nohup.err < /dev/null &
