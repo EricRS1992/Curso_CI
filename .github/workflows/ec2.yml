@@ -31,7 +31,7 @@ jobs:
       with:
         host: ${{ secrets.EC2_HOST }}
         username: ${{ secrets.EC2_USER }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        key: ${{ secrets.EC2_PRIVATE_KEY }}
         script: |
           export HOST=${{ secrets.DB_HOST }}
           export USER=${{ secrets.DB_USER }}
