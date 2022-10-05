@@ -19,3 +19,11 @@ jobs:
       with:
         username: ${{ secrets.DCKR_USER }}
         password: ${{ secrets.DCKR_PASSWORD }}
+
+    - name: Build and push Docker images
+      uses: docker/build-push-action@v3.1.1
+      with:
+        context: '.'
+        file: './Dockerfile'
+        push: true
+        tags: '${{ secrets.DCKR_USER }}/alura-github-actions:${{ github.ref_name }}'
